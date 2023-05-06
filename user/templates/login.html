@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static   %}
+
+{% block content %}
+
+
+<div class="jumbotron">
+  <h1 class="display-4">Login page</h1>
+   <hr class="my-4">
+  </div>
+<form method="POST" action="">
+   {% csrf_token %}
+
+  {% comment %} {% for item in form %} {% endcomment %}
+
+<div class="form-group">
+    <label for="exampleInputEmail1">  username</label>
+    <input type="text" name="username" class="form-control" >{{item.name}}
+   </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1">{{item.password}}
+  </div>    
+  {% if item.error  %}
+  <h2>{{item.error}}</h2>
+  {% endif %}
+  {% comment %} {% endfor %}    {% endcomment %}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock  %}
+
+{% comment %}  
+  {% for item in form %}
+  {{item.labrl_tag}}
+  {{item}}
+  {% if item.error  %}
+    <h2>{{item.error}}</h2>
+    {% endif %}
+    {% endfor %} {% endcomment %}
+
+
+{% comment %} <a href="{% url 'register' %}"> Register</a> {% endcomment %}
+
+{% comment %} <a href="{% url 'reset_password' %}"> Frogot password</a> {% endcomment %}
+{% comment %} 
+{% for msg in messages %}
+<h4>{{msg}}</h4>
+</div>
+
+{% endfor  %} {% endcomment %}
